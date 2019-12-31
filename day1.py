@@ -100,9 +100,8 @@ PUZZLE_INPUT = """81018
 148481
 114584"""
 
-PUZZLE_ARR = PUZZLE_INPUT.split()
 
-module_fuel_total = 0
+######## PART 1 #########
 
 '''
 TASK:
@@ -110,10 +109,15 @@ Fuel required to launch a given module is based on its mass.
 Specifically, to find the fuel required for a module, take its mass, 
 divide by three, round down, and subtract 2.
 '''
+
+PUZZLE_ARR = PUZZLE_INPUT.split()
+module_fuel_total = 0
+
+
 for num in PUZZLE_ARR:
     module_fuel_total += int(int(num) / 3) - 2
 
-#print(module_fuel_total)
+print(module_fuel_total)
 
 
 ######## PART 2 #########
