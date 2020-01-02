@@ -5,4 +5,3 @@ map_dictionary = {}
 for orbit in PUZZLE_INPUT:
     first_planet = orbit.split(')')[0]
     second_planet = orbit.split(')')[1]
-    map_dictionary

@@ -1,0 +1,17 @@
+		G - H		J - K - L
+		/		   /
+COM - B - C - D - E - F
+				   \
+				    I - Z
+						 \
+						  Y - X
+
+{COM: [B], B:[[G,H],C],C:[D],D:]
+
+Root - COM
+distance from the Root
+branches = [COM)B]
+branches = [E)J]
+
+1. Find Root
+2. Go each branch, and get distance from the root for each branch
