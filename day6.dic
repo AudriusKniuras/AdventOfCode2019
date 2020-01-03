@@ -14,4 +14,7 @@ branches = [COM)B]
 branches = [E)J]
 
 1. Find Root
-2. Go each branch, and get distance from the root for each branch
+2. Find branches
+
+pre-order traversal
+https://www.youtube.com/watch?v=1WxLM2hwL-U
