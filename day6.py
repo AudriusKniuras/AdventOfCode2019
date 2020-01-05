@@ -1,4 +1,5 @@
-PUZZLE_INPUT = open('day6.in').read()
+PUZZLE_INPUT = open('day6_part2.in').read()
+#PUZZLE_INPUT = open('day6.in').read()
 PUZZLE_INPUT = PUZZLE_INPUT.split('\n')
 
 def find_root(nodes = PUZZLE_INPUT):
@@ -20,51 +21,85 @@ def find_branches(root_branch, nodes = PUZZLE_INPUT):
     for node in nodes:
         first_part, second_part = node.split(')')
         if first_part == root_branch:
-            branches[root_branch].append(second_part)
+            branches[root_branch].append(first_part)
+    return branches
+
+def find_parent_node(child_branch, nodes = PUZZLE_INPUT):
+    branches = {child_branch: []}
+    for node in nodes:
+        first_part, second_part = node.split(')')
+        if second_part == child_branch:
+            branches[child_branch].append(first_part)
     return branches
 
 total_distance = 0
 distance_from_the_root = 0
 parent_distance = {}
+
 def visit_branches(node, nodes = PUZZLE_INPUT):
     global distance_from_the_root
     global total_distance
     global parent_distance
 
-    
-    # dictionary {node:[branch1,branch2]}
-    node_with_branches = find_branches(node)
-    # array of branches
-    branches = node_with_branches[node]
     distance_from_the_root += 1
-    #print(f'branch: {node_with_branches}, Distance: {distance_from_the_root}')
+    # dictionary {node:[branch1,branch2]} {E:[F,J]}
+    node_with_branches = find_branches(node)
+    # array of branches [F,J]
+    branches = node_with_branches[node]
+    
     if len(branches) == 1:
         total_distance += distance_from_the_root
         visit_branches(branches[0])
     elif len(branches) == 2:
         total_distance += distance_from_the_root
-        
-        parent_distance[node] = distance_from_the_root
-        #print(f'Current orbit: {node_with_branches}')
-        #print(f'parent distance: {parent_distance[node]}')
+        parent_distance[node] = distance_from_the_root-1
+
         visit_branches(branches[0])
+
+        distance_from_the_root += 1
+        total_distance += distance_from_the_root
+        
         visit_branches(branches[1])
+
+        del parent_distance[list(parent_distance.keys())[-1]]
+        if len(parent_distance.keys()) > 0:
+            distance_from_the_root = parent_distance[list(parent_distance.keys())[-1]]
         
     elif len(branches) == 0: 
-        total_parent_distance = 0
-        for parent in parent_distance:
-            total_parent_distance += parent_distance[parent]
-        total_distance += distance_from_the_root + total_parent_distance
-        print(f'Current orbit: {node_with_branches}')
-        print(f'Distance from the root: {total_distance}')
-        distance_from_the_root = 0
-        parent_distance = {}
+
+        distance_from_the_root -= 1
+
+        
+        # print(f'Current orbit: {node_with_branches}')
+        # print(f'Distance from the root: {total_distance}')
+        # distance between E (parent) and F(last child)
+        parent_last_child_distance = distance_from_the_root - parent_distance[list(parent_distance.keys())[-1]]
+        distance_from_the_root -= parent_last_child_distance
 
     
 
-visit_branches('COM')
-print(total_distance)
+#visit_branches('COM')
+#print(total_distance)
 
 
+######### PART 2 ##########
 
-# current output = 15405, 30000 is too low
+YOU_parent_node = find_parent_node('YOU')
+
+visited_branches = []
+def find_santa(child_node, PUZZLE_INPUT):
+    global visited_branches
+    # dict {CHILD: PARENT}
+    parent_child_dict = find_parent_node(child_node)
+    # dict {PARENT: [CHILD1, CHILD2]}
+    node_with_branches = find_branches(list(parent_child_dict.keys())[0])
+
+    parent_node = list(node_with_branches.keys())[0]
+    branches = node_with_branches[parent_node]
+
+    if len(branches) == 1:
+        find_santa(parent_node)
+    if len(branches) == 2:
+        for branch in branches:
+            if branch not in visited_branches:
+                
