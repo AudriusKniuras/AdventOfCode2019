@@ -1,0 +1,13 @@
+1. Get parent of YOU
+2. Get all childs of the parent.
+    a. if YOU is only child:
+        get parent
+    b. if other children exist:
+        get childs of all childs until the end
+        if the end is SAN:
+            return
+
+if branch in [visit_children]:
+    get parent
+    get childs of parent
+    if 
