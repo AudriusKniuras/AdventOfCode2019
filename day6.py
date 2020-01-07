@@ -1,5 +1,4 @@
 import sys
-sys.setrecursionlimit(10000)
 
 #PUZZLE_INPUT = open('day6_part2.in').read()
 PUZZLE_INPUT = open('day6.in').read()
@@ -155,5 +154,22 @@ def find_santa(node):
 
 #visit_branches("COM")
 
-orbits = {x[4:]:x[0:3] for x in PUZZLE_INPUT}
-print(orbits)
+orbits = {x.split(')')[1]:x.split(')')[0] for x in PUZZLE_INPUT}
+
+you_orbit = "YOU"
+san_orbit = "SAN"
+
+you_orbits = []
+san_orbits = []
+
+while you_orbit in orbits:
+    you_orbits.append(orbits[you_orbit])
+    you_orbit = orbits[you_orbit]
+
+while san_orbit in orbits:
+    san_orbits.append(orbits[san_orbit])
+    san_orbit = orbits[san_orbit]
+
+transfer_count = min([you_orbits.index(orbit) + san_orbits.index(orbit) for orbit in set(you_orbits) & set(san_orbits)])
+print(f"Part2: {transfer_count}")
+
