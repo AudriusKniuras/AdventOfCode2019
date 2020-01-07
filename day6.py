@@ -38,13 +38,16 @@ def find_parent_node(child_branch, nodes = PUZZLE_INPUT):
 total_distance = 0
 distance_from_the_root = 0
 parent_distance = {}
+parent_array = []
 
 def visit_branches(node, nodes = PUZZLE_INPUT):
     global distance_from_the_root
     global total_distance
     global parent_distance
+    global parent_array
 
     distance_from_the_root += 1
+    parent_array.append(node)
     # dictionary {node:[branch1,branch2]} {E:[F,J]}
     node_with_branches = find_branches(node)
     # array of branches [F,J]
@@ -60,6 +63,7 @@ def visit_branches(node, nodes = PUZZLE_INPUT):
         visit_branches(branches[0])
 
         distance_from_the_root += 1
+        
         total_distance += distance_from_the_root
         
         visit_branches(branches[1])
@@ -69,8 +73,12 @@ def visit_branches(node, nodes = PUZZLE_INPUT):
             distance_from_the_root = parent_distance[list(parent_distance.keys())[-1]]
         
     elif len(branches) == 0: 
-
+        
         distance_from_the_root -= 1
+        if node == "SAN":
+            print(f"SAN distance from the root: {distance_from_the_root}")
+            print(f"Parent array: {parent_array}")
+                    
 
         
         # print(f'Current orbit: {node_with_branches}')
@@ -78,6 +86,7 @@ def visit_branches(node, nodes = PUZZLE_INPUT):
         # distance between E (parent) and F(last child)
         parent_last_child_distance = distance_from_the_root - parent_distance[list(parent_distance.keys())[-1]]
         distance_from_the_root -= parent_last_child_distance
+
 
     
 
@@ -90,10 +99,12 @@ def visit_branches(node, nodes = PUZZLE_INPUT):
 YOU_parent_node = find_parent_node('YOU')
 
 visited_branches = []
+path_to_santa = []
 steps_taken = 0
 def find_santa(node):
     global visited_branches
     global steps_taken
+    global path_to_santa
     # dict {NODE: PARENT}
     parent_child_dict = find_parent_node(node)
     # dict {NODE: [CHILD1, CHILD2]}
@@ -108,13 +119,14 @@ def find_santa(node):
         return
     # ["BRANCH1", BRANCH2]
     child_branches = node_with_branches[node]
-    print(f"Current node: {node}")
+    #print(f"Current node: {node}")
 
     if len(child_branches) == 1:
         if child_branches[0] not in visited_branches:
             steps_taken += 1
             visited_branches.append(child_branches[0])
-            find_santa(child_branches[0])
+            path_to_santa.append(child_branches[0])
+            find_santa(child_branches[0])       
         else:
             find_santa(parent_of_node)
     if len(child_branches) == 2:
@@ -126,16 +138,19 @@ def find_santa(node):
             for not_visited_branch in not_visited:
                 steps_taken += 1
                 visited_branches.append(not_visited_branch)
+                path_to_santa.append(not_visited_branch)
                 find_santa(not_visited_branch)   
         else:
             find_santa(parent_of_node)
 
     if len(child_branches) == 0:
         if node == "SAN":
-            print(f"SANTA FOUND, orbit {parent_child_dict}")
-            print(f"STEPS TAKEN: {steps_taken}")
+            #print(f"SANTA FOUND, orbit {parent_child_dict}")
+            print(f"part2STEPS TAKEN: {len(path_to_santa)}")
         else:
+            if node in path_to_santa:
+                path_to_santa.remove(node)
             visited_branches.append(node)
             find_santa(parent_of_node)
 
-find_santa("YOU")
+visit_branches("COM")
