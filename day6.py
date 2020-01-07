@@ -1,8 +1,8 @@
 import sys
 sys.setrecursionlimit(10000)
 
-PUZZLE_INPUT = open('day6_part2.in').read()
-#PUZZLE_INPUT = open('day6.in').read()
+#PUZZLE_INPUT = open('day6_part2.in').read()
+PUZZLE_INPUT = open('day6.in').read()
 PUZZLE_INPUT = PUZZLE_INPUT.split('\n')
 
 def find_root(nodes = PUZZLE_INPUT):
@@ -153,4 +153,7 @@ def find_santa(node):
             visited_branches.append(node)
             find_santa(parent_of_node)
 
-visit_branches("COM")
+#visit_branches("COM")
+
+orbits = {x[4:]:x[0:3] for x in PUZZLE_INPUT}
+print(orbits)
