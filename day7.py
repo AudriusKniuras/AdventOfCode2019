@@ -12,7 +12,7 @@ Operations = {
     ADD: ()
 }
 
-# class Computer:
-#     def __init__(self, code):
+class Computer:
+    def __init__(self, code):
 
 
