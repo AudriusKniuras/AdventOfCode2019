@@ -6,8 +6,14 @@ TEST_INPUT = [3,12,6,12,15,1,13,14,13,4,13,99,-1,0,1,9]
 
 ####### PART 1 #######
 
-INPUT_VALUE = 100
-PUZZLE_INPUT = TEST_INPUT
+INPUT_VALUE = 5
+
+class Computer:
+    def __init__(self, intcode):
+        self.intcode = intcode
+    
+    def parameter_mode(self, mode,)
+
 
 
 
@@ -44,7 +50,7 @@ def jump_if_true(intcode, instruction, curr_pos):
     first_parameter = parameter_mode(intcode, instruction[1], intcode[curr_pos+1])
     second_parameter = parameter_mode(intcode, instruction[0], intcode[curr_pos+2])
 
-    if intcode[first_parameter] != 0:
+    if first_parameter != 0:
         curr_pos = second_parameter
     else:
         curr_pos += 3
@@ -57,7 +63,7 @@ def jump_if_false(intcode, instruction, curr_pos):
     first_parameter = parameter_mode(intcode, instruction[1], intcode[curr_pos+1])
     second_parameter = parameter_mode(intcode, instruction[0], intcode[curr_pos+2])
 
-    if intcode[first_parameter] == 0:
+    if first_parameter == 0:
         curr_pos = second_parameter
     else:
         curr_pos += 3
@@ -94,6 +100,7 @@ def run_intcode_computer(intcode_input = PUZZLE_INPUT.copy()):
 
     while current_position < len(intcode_input):
         operation = intcode_input[current_position]
+        print(operation)
         if operation%100 == 1:
             output = addition(intcode_input, list(str(operation)), current_position)
             output_position = intcode_input[current_position+3]
