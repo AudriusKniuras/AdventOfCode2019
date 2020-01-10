@@ -14,5 +14,9 @@ Operations = {
 
 class Computer:
     def __init__(self, code):
+        self.intcode == code
+
+    def add(self, position, 
+
 
 
