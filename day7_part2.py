@@ -1,13 +1,14 @@
-PUZZLE_INPUT = [3,225,1,225,6,6,1100,1,238,225,104,0,1001,152,55,224,1001,224,-68,224,4,224,1002,223,8,223,1001,224,4,224,1,224,223,223,1101,62,41,225,1101,83,71,225,102,59,147,224,101,-944,224,224,4,224,1002,223,8,223,101,3,224,224,1,224,223,223,2,40,139,224,1001,224,-3905,224,4,224,1002,223,8,223,101,7,224,224,1,223,224,223,1101,6,94,224,101,-100,224,224,4,224,1002,223,8,223,101,6,224,224,1,224,223,223,1102,75,30,225,1102,70,44,224,101,-3080,224,224,4,224,1002,223,8,223,1001,224,4,224,1,223,224,223,1101,55,20,225,1102,55,16,225,1102,13,94,225,1102,16,55,225,1102,13,13,225,1,109,143,224,101,-88,224,224,4,224,1002,223,8,223,1001,224,2,224,1,223,224,223,1002,136,57,224,101,-1140,224,224,4,224,1002,223,8,223,101,6,224,224,1,223,224,223,101,76,35,224,1001,224,-138,224,4,224,1002,223,8,223,101,5,224,224,1,223,224,223,4,223,99,0,0,0,677,0,0,0,0,0,0,0,0,0,0,0,1105,0,99999,1105,227,247,1105,1,99999,1005,227,99999,1005,0,256,1105,1,99999,1106,227,99999,1106,0,265,1105,1,99999,1006,0,99999,1006,227,274,1105,1,99999,1105,1,280,1105,1,99999,1,225,225,225,1101,294,0,0,105,1,0,1105,1,99999,1106,0,300,1105,1,99999,1,225,225,225,1101,314,0,0,106,0,0,1105,1,99999,1008,677,677,224,1002,223,2,223,1006,224,329,1001,223,1,223,8,677,226,224,102,2,223,223,1006,224,344,101,1,223,223,1107,226,226,224,1002,223,2,223,1006,224,359,1001,223,1,223,1108,677,226,224,102,2,223,223,1005,224,374,1001,223,1,223,1007,226,226,224,102,2,223,223,1006,224,389,1001,223,1,223,108,677,677,224,1002,223,2,223,1005,224,404,1001,223,1,223,1007,677,677,224,102,2,223,223,1005,224,419,1001,223,1,223,8,226,677,224,102,2,223,223,1005,224,434,101,1,223,223,1008,677,226,224,102,2,223,223,1006,224,449,1001,223,1,223,7,677,677,224,102,2,223,223,1006,224,464,1001,223,1,223,8,226,226,224,1002,223,2,223,1005,224,479,1001,223,1,223,7,226,677,224,102,2,223,223,1006,224,494,1001,223,1,223,7,677,226,224,1002,223,2,223,1005,224,509,101,1,223,223,107,677,677,224,102,2,223,223,1006,224,524,101,1,223,223,1007,677,226,224,102,2,223,223,1006,224,539,101,1,223,223,107,226,226,224,1002,223,2,223,1006,224,554,101,1,223,223,1008,226,226,224,102,2,223,223,1006,224,569,1001,223,1,223,1107,677,226,224,1002,223,2,223,1005,224,584,101,1,223,223,1107,226,677,224,102,2,223,223,1005,224,599,101,1,223,223,1108,226,677,224,102,2,223,223,1005,224,614,101,1,223,223,108,677,226,224,102,2,223,223,1005,224,629,101,1,223,223,107,226,677,224,102,2,223,223,1006,224,644,1001,223,1,223,1108,226,226,224,1002,223,2,223,1006,224,659,101,1,223,223,108,226,226,224,102,2,223,223,1005,224,674,101,1,223,223,4,223,99,226]
-TEST_INPUT = [3,12,6,12,15,1,13,14,13,4,13,99,-1,0,1,9]
+from itertools import permutations
 
-
+PUZZLE_INPUT = [3,8,1001,8,10,8,105,1,0,0,21,38,47,72,97,122,203,284,365,446,99999,3,9,1001,9,3,9,1002,9,5,9,1001,9,4,9,4,9,99,3,9,102,3,9,9,4,9,99,3,9,1001,9,2,9,102,5,9,9,101,3,9,9,1002,9,5,9,101,4,9,9,4,9,99,3,9,101,5,9,9,1002,9,3,9,101,2,9,9,102,3,9,9,1001,9,2,9,4,9,99,3,9,101,3,9,9,102,2,9,9,1001,9,4,9,1002,9,2,9,101,2,9,9,4,9,99,3,9,1001,9,2,9,4,9,3,9,101,2,9,9,4,9,3,9,102,2,9,9,4,9,3,9,1001,9,1,9,4,9,3,9,102,2,9,9,4,9,3,9,101,2,9,9,4,9,3,9,1001,9,1,9,4,9,3,9,101,2,9,9,4,9,3,9,101,1,9,9,4,9,3,9,1001,9,2,9,4,9,99,3,9,1001,9,1,9,4,9,3,9,101,1,9,9,4,9,3,9,101,2,9,9,4,9,3,9,102,2,9,9,4,9,3,9,101,2,9,9,4,9,3,9,101,1,9,9,4,9,3,9,1002,9,2,9,4,9,3,9,101,1,9,9,4,9,3,9,102,2,9,9,4,9,3,9,102,2,9,9,4,9,99,3,9,1001,9,2,9,4,9,3,9,1002,9,2,9,4,9,3,9,1001,9,2,9,4,9,3,9,102,2,9,9,4,9,3,9,102,2,9,9,4,9,3,9,101,2,9,9,4,9,3,9,1001,9,1,9,4,9,3,9,101,1,9,9,4,9,3,9,1002,9,2,9,4,9,3,9,102,2,9,9,4,9,99,3,9,101,1,9,9,4,9,3,9,101,1,9,9,4,9,3,9,102,2,9,9,4,9,3,9,102,2,9,9,4,9,3,9,101,2,9,9,4,9,3,9,101,2,9,9,4,9,3,9,1001,9,2,9,4,9,3,9,1001,9,2,9,4,9,3,9,102,2,9,9,4,9,3,9,1001,9,1,9,4,9,99,3,9,101,2,9,9,4,9,3,9,101,2,9,9,4,9,3,9,1001,9,2,9,4,9,3,9,102,2,9,9,4,9,3,9,102,2,9,9,4,9,3,9,101,1,9,9,4,9,3,9,1002,9,2,9,4,9,3,9,1002,9,2,9,4,9,3,9,101,2,9,9,4,9,3,9,1001,9,2,9,4,9,99]
+TEST_INPUT = [3,26,1001,26,-4,26,3,27,1002,27,2,27,1,27,26,27,4,27,1001,28,-1,28,1005,28,6,99,0,0,5]
 
 
 ####### PART 1 #######
 
 INPUT_VALUE = 5
 
+# PUZZLE_INPUT = TEST_INPUT
 
 def parameter_mode(intcode, mode, parameter):
     if mode == '0':
@@ -87,12 +88,15 @@ def equal_parameters(intcode, instruction, curr_pos):
 
 
 
-def run_intcode_computer(intcode_input = PUZZLE_INPUT.copy()):
-    current_position = 0
+def run_intcode_computer(intcode_input = PUZZLE_INPUT.copy(), phase_setting = 0, amplified_signal = INPUT_VALUE,
+                        curr_pos = 0, input_count = 1):
+    current_position = curr_pos
+    input_count = input_count
+    opcode = 0
 
     while current_position < len(intcode_input):
         operation = intcode_input[current_position]
-
+        # print(operation)
         if operation%100 == 1:
             output = addition(intcode_input, list(str(operation)), current_position)
             output_position = intcode_input[current_position+3]
@@ -108,15 +112,21 @@ def run_intcode_computer(intcode_input = PUZZLE_INPUT.copy()):
 
         elif operation == 3:
             output_position = intcode_input[current_position+1]
+            if input_count == 1:
+                intcode_input[output_position] = phase_setting
+                input_count += 1
+            elif input_count > 1:
+                intcode_input[output_position] = amplified_signal
 
-            intcode_input[output_position] = INPUT_VALUE
             current_position += 2
 
         elif operation == 4:
             output_position = intcode_input[current_position+1]
 
-            print(f'OPCODE4: {intcode_input[output_position]}')
+            #print(f'OPCODE4: {intcode_input[output_position]}')
+            opcode = intcode_input[output_position]
             current_position += 2
+            return [opcode, current_position, input_count, intcode_input]
 
         elif operation%100 == 5:
             current_position = jump_if_true(intcode_input, list(str(operation)), current_position)
@@ -142,6 +152,58 @@ def run_intcode_computer(intcode_input = PUZZLE_INPUT.copy()):
         else:
             print("LOOP")
             break
-    return "finished"
+    # return opcode
+    # return "RETURN REACHED"
 
-print(run_intcode_computer())
+#print(run_intcode_computer())
+
+
+
+
+def phase_booster(phase_setting, amplified_signal):
+    for phase in phase_setting:
+        amplified_signal = run_intcode_computer(phase_setting = phase, amplified_signal = amplified_signal)
+    return amplified_signal
+
+def signal_amplifier():
+    biggest_signal = 0
+    perm_phase_array = list(permutations([0,1,2,3,4]))
+
+    for perm in perm_phase_array:
+        signal = phase_booster(phase_setting = perm, amplified_signal = 0)
+        if signal > biggest_signal:
+            biggest_signal = signal
+
+    return biggest_signal
+
+# signal = signal_amplifier()
+# print(f'Day7, part1: {signal}')
+
+def signal_amplifier_feedback_loop():
+    biggest_signal = 0
+    perm_phase_array = list(permutations([5,6,7,8,9]))
+    # perm = [9,8,7,6,5]
+    for perm in perm_phase_array:
+        e = [0,0,1,PUZZLE_INPUT.copy()]
+        a = [0,0,1,PUZZLE_INPUT.copy()]
+        b = [0,0,1,PUZZLE_INPUT.copy()]
+        c = [0,0,1,PUZZLE_INPUT.copy()]
+        d = [0,0,1,PUZZLE_INPUT.copy()]
+        while e != "BREAK reached":
+            a = run_intcode_computer(intcode_input=a[3],phase_setting=perm[0], amplified_signal=e[0], curr_pos=a[1], input_count=a[2])
+            # print(f'A: {a[0]}')
+            if isinstance(a, list):
+                b = run_intcode_computer(intcode_input=b[3],phase_setting=perm[1], amplified_signal=a[0], curr_pos=b[1], input_count=b[2])
+            else:
+                break
+            # print(f'B: {b}')
+            c = run_intcode_computer(intcode_input=c[3],phase_setting=perm[2], amplified_signal=b[0], curr_pos=c[1], input_count=c[2])
+            # print(f'C: {c}')
+            d = run_intcode_computer(intcode_input=d[3],phase_setting=perm[3], amplified_signal=c[0], curr_pos=d[1], input_count=d[2])
+            # print(f'D: {d}')
+            e = run_intcode_computer(intcode_input=e[3],phase_setting=perm[4], amplified_signal=d[0], curr_pos=e[1], input_count=e[2])
+            if e[0] > biggest_signal:
+                print(f'Biggest signal found: {e[0]}')
+                biggest_signal = e[0]
+
+signal_amplifier_feedback_loop()
